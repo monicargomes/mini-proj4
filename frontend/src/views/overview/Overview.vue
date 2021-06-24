@@ -5,14 +5,22 @@
       <b-button variant="primary" class="mb-5">Adicionar tarefa</b-button>
     </router-link>
     <div class="mb-4" v-for="(item, index) in items" :key="index">
-      <h3 class="mb-3">{{ item.date }}</h3>
+      <h3 class="mb-3" >
+        {{ item.date }}
+        <b-icon
+          v-if="item.isPast"
+          icon="exclamation-circle"
+          variant="danger"
+          class="h5"
+        ></b-icon>
+      </h3>
       <b-card v-for="(task, index) in item.tasks" :key="index" class="mb-2">
         <div class="d-flex justify-content-between">
           <div>
             <b-icon
               icon="check2-square"
               variant="success"
-              class="h5 mb-0 cursor-pointer"
+              class="h5 mb-0 me-2 cursor-pointer"
               @click="completeTask(task)"
             ></b-icon>
             <span :class="[task.complete && 'complete']">{{
@@ -45,7 +53,7 @@ import {
   EDIT_TASK,
   REMOVE_TASK,
 } from "../../store/tasks/task.constant";
-import { format, formatISO, compareAsc } from "date-fns";
+import { format, formatISO, compareAsc, isPast } from "date-fns";
 import { pt } from "date-fns/locale";
 import { mapGetters } from "vuex";
 
@@ -53,7 +61,7 @@ export default {
   name: "app-overview",
   data() {
     return {
-      heading: "Tarefas da semana",
+      heading: "Minhas tarefas",
       items: [],
     };
   },
@@ -74,6 +82,7 @@ export default {
 
       return sortedDates.map((date) => {
         return {
+          isPast: isPast(new Date(date)),
           date: format(new Date(date), "dd 'de' MMMM", { locale: pt }),
           tasks: tasks.filter(
             (task) =>

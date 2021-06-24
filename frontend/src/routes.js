@@ -1,5 +1,5 @@
-import Overview from "./pages/overview/Overview";
-import AddTask from "./pages/add-task/AddTask";
+import Overview from "./views/overview/Overview";
+import AddTask from "./views/add-task/AddTask";
 
 export const routes = [
   {
