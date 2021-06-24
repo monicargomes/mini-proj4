@@ -1,7 +1,6 @@
 module.exports = (app) => {
     const bodyParser = require('body-parser');
     const cors = require('cors');
-    const routes = require('../routes/task.routes');
 
     app.use(cors());
     app.options('*', cors());
@@ -20,5 +19,4 @@ module.exports = (app) => {
     }));
 
     app.use(bodyParser.json());
-    app.use('/tasks', routes)
 };
