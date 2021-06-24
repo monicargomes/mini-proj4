@@ -1,26 +1,14 @@
 <template>
   <div id="app">
     <div class="body">
-      <b-card no-body>
-        <b-card-header header-tag="nav">
-          <app-header></app-header>
-        </b-card-header>
-
-        <b-card-body>
-          <router-view></router-view>
-        </b-card-body>
-      </b-card>
+      <router-view></router-view>
     </div>
   </div>
 </template>
 
 <script>
-import Header from "./components/header/Header";
 export default {
   name: "app",
-  components: {
-    "app-header": Header,
-  },
 };
 </script>
 

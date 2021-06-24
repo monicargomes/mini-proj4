@@ -15,61 +15,65 @@ const state = {
 
 const getters = {
   getTasks: state => state.tasks,
-  getTasksById: state => id => state.tasks.find(task => task._id === id),
-  getMessage: state => state.message,
+  getTaskById: state => id => state.tasks.find(task => task._id === id),
+  getMessage: state => state.message
 };
 
 const actions = {
   [FETCH_TASKS]: ({ commit }) => {
     return new Promise((resolve, reject) => {
-      taskService.getTasks()
-        .then(
-          res => {
-            commit(SET_TASKS, res.body);
-            resolve(res)
-          },
-          err => {
-            commit(SET_MESSAGE, err.message)
-            reject(err)
-          });
-    })
+      taskService.getTasks().then(
+        res => {
+          commit(SET_TASKS, res.body);
+          resolve(res);
+        },
+        err => {
+          commit(SET_MESSAGE, err.message);
+          reject(err);
+        }
+      );
+    });
   },
   [ADD_TASK]: ({ commit }, payload) => {
     return new Promise((resolve, reject) => {
-      taskService.addTask(payload)
-        .then(
-          res => {
-            commit(SET_MESSAGE, `A tarefa foi adicionada com sucesso!`);
-            resolve(res)
-          }, err => {
-            commit(SET_MESSAGE, err.message)
-            reject(err)
-          });
+      taskService.addTask(payload).then(
+        res => {
+          commit(SET_MESSAGE, `A tarefa foi adicionada com sucesso!`);
+          resolve(res);
+        },
+        err => {
+          commit(SET_MESSAGE, err.message);
+          reject(err);
+        }
+      );
     });
   },
   [EDIT_TASK]: ({ commit }, payload) => {
     return new Promise((resolve, reject) => {
-      taskService.editTask(payload)
-        .then(
-          res => {
-            commit(SET_MESSAGE, `A tarefa foi foi atualizada com sucesso!`);
-            resolve(res)
-          }, err => {
-            commit(SET_MESSAGE, err)
-            reject(err)
-          });
+      taskService.editTask(payload).then(
+        res => {
+          commit(SET_MESSAGE, `A tarefa foi foi atualizada com sucesso!`);
+          resolve(res);
+        },
+        err => {
+          commit(SET_MESSAGE, err);
+          reject(err);
+        }
+      );
     });
   },
   [REMOVE_TASK]: ({ commit }, id) => {
     return new Promise((resolve, reject) => {
-      taskService.removeTask(id)
-        .then(res => {
+      taskService.removeTask(id).then(
+        res => {
           commit(SET_MESSAGE, `A tarefa foi removida com sucesso!`);
-          resolve(res)
-        }, err => {
-          commit(SET_MESSAGE, err.message)
-          reject(err)
-        });
+          resolve(res);
+        },
+        err => {
+          commit(SET_MESSAGE, err.message);
+          reject(err);
+        }
+      );
     });
   }
 };
@@ -89,4 +93,4 @@ export default {
   getters,
   actions,
   mutations
-}
+};
