@@ -1,5 +1,7 @@
 import Overview from "./views/overview/Overview";
 import AddTask from "./views/add-task/AddTask";
+import Login from "./views/login/Login";
+import Register from "./views/register/Register";
 
 export const routes = [
   {
@@ -17,7 +19,17 @@ export const routes = [
     name: "edit"
   },
   {
+    path: "/register",
+    component: Register,
+    name: "register"
+  },
+  {
+    path: "/login",
+    component: Login,
+    name: "login"
+  },
+  {
     path: "/",
-    redirect: "/overview"
+    redirect: "/login"
   }
 ];

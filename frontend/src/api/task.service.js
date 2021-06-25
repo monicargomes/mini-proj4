@@ -1,12 +1,12 @@
 import API_URL from './config.js'
 
 export const taskService = {
-  async getTasks() {
+  async getTasks(token) {
     let response = await fetch(`${API_URL}/tasks`, {
       method: "GET",
       headers: {
         'Content-Type': 'application/json',
-        // 'Authorization': token
+        'Authorization': token
       }
     });
     if (response.ok) {
@@ -16,12 +16,12 @@ export const taskService = {
     }
   },
 
-  async addTask(payload) {
+  async addTask(token, payload) {
     const response = await fetch(`${API_URL}/tasks`, {
       method: "POST",
       headers: {
         'Content-Type': 'application/json',
-        // 'Authorization': token
+        'Authorization': token
       },
       body: JSON.stringify(payload)
     })
@@ -32,12 +32,12 @@ export const taskService = {
     }
   },
 
-  async editTask(payload) {
+  async editTask(token, payload) {
     const response = await fetch(`${API_URL}/tasks/${payload._id}`, {
       method: "PUT",
       headers: {
         'Content-Type': 'application/json',
-        // 'Authorization': token
+        'Authorization': token
       },
       body: JSON.stringify(payload)
     });
@@ -48,12 +48,12 @@ export const taskService = {
     }
   },
 
-  async removeTask(id) {
+  async removeTask(token, id) {
     const response = await fetch(`${API_URL}/tasks/${id}`, {
       method: "DELETE",
       headers: {
         'Content-Type': 'application/json',
-        // 'Authorization': token
+        'Authorization': token
       }
     });
     if (response.ok) {

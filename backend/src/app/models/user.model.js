@@ -4,6 +4,10 @@ const CONFIG = require("../../config/config");
 const bcrypt = require("bcryptjs");
 
 const userSchema = new Schema({
+  name: {
+    type: String,
+    unique: true,
+  },
   username: {
     type: String,
     unique: true,

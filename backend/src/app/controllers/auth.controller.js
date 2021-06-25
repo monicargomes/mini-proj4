@@ -7,11 +7,6 @@ const bcrypt = require("bcryptjs");
 const JWT = require("jsonwebtoken");
 const CONFIG = require("../../config/config");
 
-exports.getInfo = (req, res) => {
-    let message = AuthMessages.success.s1;
-    message.body = req.user;
-    return res.status(message.http).send(message);
-}
 
 exports.login = (req, res) => {
 
@@ -38,7 +33,7 @@ exports.login = (req, res) => {
             issuer: CONFIG.auth.issuer
         };
 
-        let token = JWT.sign(payload, user.auth.private_key, options);
+        let token = JWT.sign(payload, user.private_key, options);
 
         let message = AuthMessages.success.s0;
         message.body = user;

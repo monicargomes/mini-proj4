@@ -97,7 +97,7 @@ export default {
         () => {
           this.items = this.groupTaskbyDate(this.getTasks);
         },
-        (err) => console.log(`${err.message}`, "Erro", "error")
+        (err) => this.$alert(`${err.message}`, "Erro", "error")
       );
     },
     completeTask(task) {
@@ -107,7 +107,7 @@ export default {
           () => {
             this.fetchTasks();
           },
-          (err) => console.log(`${err.message}`, "Erro", "error")
+          (err) => this.$alert(`${err.message}`, "Erro", "error")
         );
     },
     removeTask(id) {
@@ -115,7 +115,7 @@ export default {
         () => {
           this.fetchTasks();
         },
-        (err) => console.log(`${err.message}`, "Erro", "error")
+        (err) => this.$alert(`${err.message}`, "Erro", "error")
       );
     },
     editTask(id) {

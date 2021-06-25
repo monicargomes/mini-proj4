@@ -20,9 +20,9 @@ const getters = {
 };
 
 const actions = {
-  [FETCH_TASKS]: ({ commit }) => {
+  [FETCH_TASKS]: ({ commit, rootState }) => {
     return new Promise((resolve, reject) => {
-      taskService.getTasks().then(
+      taskService.getTasks(rootState.auth.token).then(
         res => {
           commit(SET_TASKS, res.body);
           resolve(res);
@@ -34,9 +34,9 @@ const actions = {
       );
     });
   },
-  [ADD_TASK]: ({ commit }, payload) => {
+  [ADD_TASK]: ({ commit, rootState }, payload) => {
     return new Promise((resolve, reject) => {
-      taskService.addTask(payload).then(
+      taskService.addTask(rootState.auth.token, payload).then(
         res => {
           commit(SET_MESSAGE, `A tarefa foi adicionada com sucesso!`);
           resolve(res);
@@ -48,9 +48,9 @@ const actions = {
       );
     });
   },
-  [EDIT_TASK]: ({ commit }, payload) => {
+  [EDIT_TASK]: ({ commit, rootState }, payload) => {
     return new Promise((resolve, reject) => {
-      taskService.editTask(payload).then(
+      taskService.editTask(rootState.auth.token, payload).then(
         res => {
           commit(SET_MESSAGE, `A tarefa foi foi atualizada com sucesso!`);
           resolve(res);
@@ -64,7 +64,7 @@ const actions = {
   },
   [REMOVE_TASK]: ({ commit }, id) => {
     return new Promise((resolve, reject) => {
-      taskService.removeTask(id).then(
+      taskService.removeTask(rootState.auth.token, id).then(
         res => {
           commit(SET_MESSAGE, `A tarefa foi removida com sucesso!`);
           resolve(res);

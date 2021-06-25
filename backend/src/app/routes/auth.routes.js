@@ -9,6 +9,5 @@ router.route('/')
     .post([body('username').isAlphanumeric(),
         body('password').isString()
     ], AuthController.login)
-    .get(AuthController.checkAuth, AuthController.getInfo);
 
 module.exports = router;

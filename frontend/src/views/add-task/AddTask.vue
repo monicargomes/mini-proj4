@@ -88,11 +88,11 @@ export default {
     addTask() {
       this.$store.dispatch(`task/${ADD_TASK}`, this.$data.form).then(
         () => {
-          console.log(this.getMessage, "Task adicionada!", "success");
+          this.$alert(this.getMessage, "Task adicionada!", "success");
           this.$router.push({ name: "overview" });
         },
         (err) => {
-          console.log(`${err.message}`, "Erro", "error");
+          this.$alert(`${err.message}`, "Erro", "error");
         }
       );
     },
@@ -101,7 +101,7 @@ export default {
         () => {
           this.$router.push({ name: "overview" });
         },
-        (err) => console.log(`${err.message}`, "Erro", "error")
+        (err) => this.$alert(`${err.message}`, "Erro", "error")
       );
     },
     fetch(id) {
@@ -109,7 +109,7 @@ export default {
         () => {
           this.form = this.getTaskById(id);
         },
-        (err) => console.log(`${err.message}`, "Erro", "error")
+        (err) => this.$alert(`${err.message}`, "Erro", "error")
       );
     },
   },
