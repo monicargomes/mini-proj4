@@ -6,7 +6,6 @@ export const MODULE_BASE = "auth";
 export const AUTH_LOGIN = "authLogin";
 export const AUTH_LOGOUT = "authLogout";
 export const AUTH_REGISTER = "authRegister";
-export const AUTH_INFO = "authInfo";
 
 // Mutation types
 export const AUTH_LOGIN_SUCCESS = "authLoginSuccess"

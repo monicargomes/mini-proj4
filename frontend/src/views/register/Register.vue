@@ -21,12 +21,12 @@
 
     <b-form-group
       class="mb-3"
-      id="input-group-1"
+      id="input-group-2"
       label="Username:"
-      label-for="input-1"
+      label-for="input-2"
     >
       <b-form-input
-        id="input-1"
+        id="input-2"
         v-model="form.username"
         placeholder="Entre username"
       ></b-form-input>
@@ -34,12 +34,13 @@
 
     <b-form-group
       class="mb-3"
-      id="input-group-1"
+      id="input-group-3"
       label="Senha"
-      label-for="input-1"
+      label-for="input-3"
     >
       <b-form-input
-        id="input-1"
+        id="input-3"
+        type="password"
         v-model="form.password"
         placeholder="Entrar senha"
       ></b-form-input>

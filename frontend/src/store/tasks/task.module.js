@@ -62,7 +62,7 @@ const actions = {
       );
     });
   },
-  [REMOVE_TASK]: ({ commit }, id) => {
+  [REMOVE_TASK]: ({ commit, rootState }, id) => {
     return new Promise((resolve, reject) => {
       taskService.removeTask(rootState.auth.token, id).then(
         res => {

@@ -18,7 +18,6 @@ const router = new VueRouter({ routes, mode: "history" });
 
 router.beforeEach((to, from, next) => {
   const isAuthenticated = store.getters["auth/isUserLoggedIn"];
-  console.log('isAuthenticated', isAuthenticated);
   if (to.name !== 'login' && to.name !== 'register' && !isAuthenticated) next({ name: 'login' })
   else next()
 })

@@ -35,16 +35,6 @@ export const authService = {
     } else {
       throw Error(handleResponses(response.status));
     }
-  },
-  async getInfo(token) {
-    const response = await fetch(`${API_URL}/auth`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: token
-      }
-    });
-    return await response.json();
   }
 };
 

@@ -2,7 +2,6 @@ import { authService } from "../../api/auth.service.js";
 import {
   AUTH_LOGIN,
   AUTH_REGISTER,
-  AUTH_INFO,
   AUTH_LOGIN_SUCCESS,
   AUTH_LOGOUT_SUCCESS,
   AUTH_REGISTER_SUCCESS,
@@ -46,7 +45,6 @@ const actions = {
 
     })
   },
-
   [AUTH_REGISTER]: async ({ commit }, payload) => {
     return new Promise((resolve, reject) => {
       authService.register(payload)
@@ -57,13 +55,6 @@ const actions = {
       .catch(err => reject(err))
     });
   },
-
-  [AUTH_INFO]: async ({ commit }, token) => {
-    commit(
-      SET_MESSAGE,
-      await authService.getInfo(token)
-    );
-  }
 };
 
 // mutations

@@ -19,12 +19,13 @@
 
     <b-form-group
       class="mb-3"
-      id="input-group-1"
+      id="input-group-2"
       label="Senha"
-      label-for="input-1"
+      label-for="input-2"
     >
       <b-form-input
-        id="input-1"
+        id="input-2"
+        type="password"
         v-model="form.password"
         placeholder="Entrar senha"
       ></b-form-input>
