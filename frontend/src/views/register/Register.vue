@@ -1,5 +1,5 @@
 <template>
-  <b-form @submit="onSubmit" @reset="onReset" v-if="show">
+  <b-form @submit="onSubmit" @reset="onReset" v-if="show" class="w-50 mx-auto">
     <h1 class="mt-4 mb-3">{{ heading }}</h1>
     <router-link to="/" custom>
       <b-button variant="primary" class="mb-5"
@@ -79,7 +79,7 @@ export default {
       this.$store
           .dispatch(`auth/${AUTH_REGISTER}`, this.form)
           .then(() => {
-            this.$alert(this.getMessage, "Registo", "success");
+            this.$alert(this.getMessage, "Registro", "success");
             this.$router.push({ name: "/" });
           })
           .catch(err => {

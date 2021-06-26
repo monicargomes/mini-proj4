@@ -11,19 +11,21 @@
           v-if="item.isPast"
           icon="exclamation-circle"
           variant="danger"
-          class="h5"
+          class="h4"
         ></b-icon>
       </h3>
       <b-card v-for="(task, index) in item.tasks" :key="index" class="mb-2">
         <div class="d-flex justify-content-between">
-          <div>
+          <div class="d-flex align-items-center">
+            <div class="task-checkbox cursor-pointer me-2 d-flex align-items-center" @click="completeTask(task)">
             <b-icon
-              icon="check2-square"
+              v-if="task.complete"
+              icon="check2"
               variant="success"
-              class="h5 mb-0 me-2 cursor-pointer"
-              @click="completeTask(task)"
+              class="h5 mb-0"
             ></b-icon>
-            <span :class="[task.complete && 'complete']">{{
+            </div>
+            <span :class="[task.complete && 'task-complete']">{{
               task.description
             }}</span>
           </div>
@@ -31,7 +33,7 @@
             <b-icon
               icon="trash"
               variant="danger"
-              class="h5 mb-0 cursor-pointer"
+              class="h5 mb-0 me-2 cursor-pointer"
               @click="removeTask(task._id)"
             ></b-icon>
             <b-icon
@@ -62,7 +64,7 @@ export default {
   data() {
     return {
       heading: "Minhas tarefas",
-      items: [],
+      items: []
     };
   },
   computed: {
@@ -129,11 +131,19 @@ export default {
 </script>
 
 <style lang="css">
-.complete {
-  text-decoration: line-through;
-}
-
 .cursor-pointer {
   cursor: pointer;
 }
+
+.task-complete {
+  text-decoration: line-through;
+}
+
+.task-checkbox {
+  border: 1px solid black;
+  border-radius: 2px;
+  width: 16px;
+  height: 16px;
+}
+
 </style>

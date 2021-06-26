@@ -1,5 +1,5 @@
 <template>
-  <b-form @submit="onSubmit" @reset="onReset" v-if="show">
+  <b-form @submit="onSubmit" @reset="onReset" v-if="show" class="w-50 mx-auto">
     <h1 class="mt-4 mb-3">{{ heading }}</h1>
     <router-link to="/register" custom>
       <b-button variant="primary" class="mb-5">Novo utilizador</b-button>

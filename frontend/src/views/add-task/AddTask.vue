@@ -88,7 +88,7 @@ export default {
     addTask() {
       this.$store.dispatch(`task/${ADD_TASK}`, this.$data.form).then(
         () => {
-          this.$alert(this.getMessage, "Task adicionada!", "success");
+          this.$alert(this.getMessage, "Tarefa adicionada!", "success");
           this.$router.push({ name: "overview" });
         },
         (err) => {

@@ -35,7 +35,7 @@ ul {
   padding: 0;
 }
 .body {
-  width: 50%;
+  width: 40%;
   margin: auto;
   height: 100%;
   padding: 24px 0;
